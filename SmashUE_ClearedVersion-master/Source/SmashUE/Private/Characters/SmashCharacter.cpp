@@ -2,17 +2,16 @@
 
 
 #include "Character/SmashCharacter.h"
+#include "Character/SmashCharacterStateMachine.h"
 
-//#include "Character/SmashCharacterStateMachine.h"
+ Sets default values
 
-// Sets default values
-
-// Called when the game starts or when spawned
+ Called when the game starts or when spawned
 
 
 ASmashCharacter::ASmashCharacter()
 {
-	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	//Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -20,9 +19,9 @@ ASmashCharacter::ASmashCharacter()
 void ASmashCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	//CreateStateMachine();
+	CreateStateMachine();
 
-	//InitStateMachine();
+	InitStateMachine();
 	
 }
 
@@ -30,6 +29,7 @@ void ASmashCharacter::BeginPlay()
 void ASmashCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+ 	RotateMeshUsingOrientX();
 
 }
 
@@ -39,7 +39,7 @@ void ASmashCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	//RotateMeshUsingOrientX();
 }
-/*
+
 float ASmashCharacter::GetOrientX() const
 {
 	return OrientX;
@@ -57,7 +57,7 @@ void ASmashCharacter::RotateMeshUsingOrientX() const
 	GetMesh()->SetRelativeRotation(Rotation);
 }
 
-/*void ASmashCharacter::CreateStateMachine()
+void ASmashCharacter::CreateStateMachine()
 {
 	StateMachine = NewObject<USmashCharacterStateMachine>(this);
 }
@@ -66,4 +66,4 @@ void ASmashCharacter::InitStateMachine()
 {
 	if(StateMachine == nullptr) return;
 	StateMachine->Init(this);
-}*/
+}

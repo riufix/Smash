@@ -29,7 +29,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	/*
+	
 #pragma  endregion Unreal Default
 
 #pragma  region Orient
@@ -58,5 +58,5 @@ protected:
 	TObjectPtr<USmashCharacterStateMachine> StateMachine;
 	
 #pragma endregion State Machine
-	*/
+	
 };
