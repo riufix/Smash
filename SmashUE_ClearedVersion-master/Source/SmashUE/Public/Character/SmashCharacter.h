@@ -52,10 +52,10 @@ public:
 	void CreateStateMachine();
 
 	void InitStateMachine();
-/*
+
 protected:
 	UPROPERTY()
-	TObjectPtr<USmashCharacterStateMachine> StateMachine;*/
+	TObjectPtr<USmashCharacterStateMachine> StateMachine;
 	
 #pragma endregion State Machine
 	
