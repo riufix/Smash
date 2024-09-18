@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "SmashCharacterStateMachine.generated.h"
+
+
 class USmashCharacterState;
 class ASmashCharacter;
 /**

@@ -11,6 +11,6 @@ UENUM()
 enum class ESmashCharacterStateID : uint8
 {
 	None = 0,
-	idle,
-	walking,
+	Idle,
+	Walk,
    };

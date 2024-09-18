@@ -2,19 +2,21 @@
 
 
 #include "Characters/SmashCharacterStateMachine.h"
-#include "SmashCharacterState.h"
-#include "Character/SmashCharacter.h"
+#include "Characters/SmashCharacterStateID.h"
+#include "Characters/SmashCharacterState.h"
+#include "Characters/SmashCharacter.h"
+
+
+ASmashCharacter* USmashCharacterStateMachine::GetCharacter() const
+{
+	return Character;
+}
 
 void USmashCharacterStateMachine::Init(ASmashCharacter* InCharacter)
 {
 	Character = InCharacter;
 	FindStates();
 	InitStates();
-}
-
-ASmashCharacter* USmashCharacterStateMachine::GetCharacter() const
-{
-	return Character;
 }
 
 void USmashCharacterStateMachine::FindStates()

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Character/SmashCharacter.h"
+#include "Characters/SmashCharacter.h"
 #include "GameFramework/GameModeBase.h"
 #include "MatchGameMode.generated.h"
 
