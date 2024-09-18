@@ -2,11 +2,11 @@
 
 
 #include "Character/SmashCharacter.h"
-#include "Character/SmashCharacterStateMachine.h"
+//#include "Character/SmashCharacterStateMachine.h"
 
- Sets default values
+ //Sets default values
 
- Called when the game starts or when spawned
+ //Called when the game starts or when spawned
 
 
 ASmashCharacter::ASmashCharacter()
@@ -59,11 +59,11 @@ void ASmashCharacter::RotateMeshUsingOrientX() const
 
 void ASmashCharacter::CreateStateMachine()
 {
-	StateMachine = NewObject<USmashCharacterStateMachine>(this);
+	//StateMachine = NewObject<USmashCharacterStateMachine>(this);
 }
 
 void ASmashCharacter::InitStateMachine()
 {
-	if(StateMachine == nullptr) return;
-	StateMachine->Init(this);
+	//if(StateMachine == nullptr) return;
+	//StateMachine->Init(this);
 }
