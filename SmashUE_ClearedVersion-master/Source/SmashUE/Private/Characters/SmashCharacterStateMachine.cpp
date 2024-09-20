@@ -44,6 +44,12 @@ USmashCharacterState* USmashCharacterStateMachine::GetState(ESmashCharacterState
 	return nullptr;
 }
 
+void USmashCharacterStateMachine::Tick(float DeltaTime)
+{
+	if(CurrentState != nullptr) return;
+	CurrentState->StateTick(DeltaTime);
+}
+
 void USmashCharacterStateMachine::Init(ASmashCharacter* InCharacter)
 {
 	Character = InCharacter;
