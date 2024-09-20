@@ -2,7 +2,8 @@
 
 
 #include "Characters/SmashCharacter.h"
-//#include "Character/SmashCharacterStateMachine.h"
+
+#include "Characters/SmashCharacterStateMachine.h"
 
  //Sets default values
 
@@ -37,7 +38,7 @@ void ASmashCharacter::Tick(float DeltaTime)
 void ASmashCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	//RotateMeshUsingOrientX();
+	RotateMeshUsingOrientX();
 }
 
 float ASmashCharacter::GetOrientX() const
@@ -59,11 +60,11 @@ void ASmashCharacter::RotateMeshUsingOrientX() const
 
 void ASmashCharacter::CreateStateMachine()
 {
-	//StateMachine = NewObject<USmashCharacterStateMachine>(this);
+	StateMachine = NewObject<USmashCharacterStateMachine>(this);
 }
 
 void ASmashCharacter::InitStateMachine()
 {
-	//if(StateMachine == nullptr) return;
-	//StateMachine->Init(this);
+	if(StateMachine == nullptr) return;
+	StateMachine->Init(this);
 }

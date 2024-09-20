@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Match/MatchGameMode.h"
 #include "Arena/ArenaPlayerStart.h"
 #include "Arena/ArenaSettings.h"
@@ -13,16 +12,6 @@ void AMatchGameMode::BeginPlay()
 	TArray<AArenaPlayerStart*> PlayerStartsPoints;
 	FindPlayerStartActorInArena(PlayerStartsPoints);
 	SpawnCharacters(PlayerStartsPoints);
-	
-	for(AArenaPlayerStart* PlayerStartPoint : PlayerStartsPoints)
-	{
-		EAutoReceiveInput::Type InputType = PlayerStartPoint->AutoReceiveInput.GetValue();
-		TSubclassOf<ASmashCharacter> SmashCharacterClass = GetSmashCharacterClassForInputType(InputType);
-		if(SmashCharacterClass == nullptr) continue;
-		
-		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Cyan, PlayerStartPoint->GetFName().ToString());
-		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Cyan, SmashCharacterClass -> GetFName().ToString());
-	}
 	
 }
 
@@ -48,7 +37,7 @@ void AMatchGameMode::SpawnCharacters(const TArray<AArenaPlayerStart*>& SpawnPoin
 		TSubclassOf<ASmashCharacter> SmashCharacterClass = GetSmashCharacterClassForInputType(inputType);
 		if(SmashCharacterClass == nullptr) continue;
 
-		ASmashCharacter* NewCharacter = GetWorld()->SpawnActor<ASmashCharacter>(SmashCharacterClass, SpawnPoint->GetTransform());
+		ASmashCharacter* NewCharacter = GetWorld()->SpawnActorDeferred<ASmashCharacter>(SmashCharacterClass, SpawnPoint->GetTransform());
 
 		if(NewCharacter == nullptr) continue;
 		NewCharacter->AutoPossessPlayer = SpawnPoint->AutoReceiveInput;
