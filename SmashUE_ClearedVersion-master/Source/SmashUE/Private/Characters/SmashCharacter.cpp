@@ -70,3 +70,8 @@ void ASmashCharacter::InitStateMachine()
 	StateMachine->Init(this);
 }
 
+void ASmashCharacter::TickStateMachine(float DeltaTime) const
+{
+	if(StateMachine == nullptr) return;
+	StateMachine->Tick(DeltaTime);
+}
