@@ -18,7 +18,7 @@ bool FLocalMultiplayerProfileData::ContainsKey(const FKey& Key, ELocalMultiplaye
 			return true;
 		}
 	}
-	
+	return false;
 }
 
 UInputMappingContext* FLocalMultiplayerProfileData::GetIMCFromType(ELocalMultiplayerInputMappingType MappingType) const
@@ -27,9 +27,10 @@ UInputMappingContext* FLocalMultiplayerProfileData::GetIMCFromType(ELocalMultipl
 	{
 	case ELocalMultiplayerInputMappingType::InGame:
 		return IMCIngame;
-		
-	case EWindowType::Menu:
+	case ELocalMultiplayerInputMappingType::Menu:
 		return IMCMenu;
+	default:
+		return nullptr;
 	}
 }
 
@@ -40,5 +41,12 @@ int ULocalMultiplayerSettings::GetNbKeyBoardProfiles() const
 
 int ULocalMultiplayerSettings::FindKeyBoardProfileIndexFromKey(const FKey& Key,	ELocalMultiplayerInputMappingType MappingType) const
 {
-	
+	for(int i = 0; i < KeyboardProfileDatas.Num(); i++)
+	{
+		if(KeyboardProfileDatas[i].ContainsKey(Key, MappingType))
+		{
+			return i;
+		}
+	}
+	return -1;
 }
