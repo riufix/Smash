@@ -16,16 +16,26 @@ void ULocalMultiplayerSubsystem::CreatAndInitializePlayers(ELocalMultiplayerInpu
 
 int ULocalMultiplayerSubsystem::GetAssignedPlayerIndexFromKeyboardProfileIndex(int KeyboardProfileIndex)
 {
-	for(int i = 0; i < )
+	if(PlayerIndexFromKeyboardProfileIndex.Contains(KeyboardProfileIndex))
+	{
+		return *PlayerIndexFromKeyboardProfileIndex.Find(KeyboardProfileIndex);
+	}
 	return -1;
 }
 
 int ULocalMultiplayerSubsystem::AssignPlayerToKeyboardProfile(int KeyboardProfileIndex)
 {
+	LastAssignPlayerIndex++;
+	
+	PlayerIndexFromKeyboardProfileIndex.Add(LastAssignPlayerIndex, KeyboardProfileIndex);
+
+	return LastAssignPlayerIndex;
 }
 
 void ULocalMultiplayerSubsystem::AssignedKeyboardMapping(int PlayerIndex, int KeyboardProfileIndex,	ELocalMultiplayerInputMappingType MappingType) const
 {
+	ULocalPlayer* playerref = GetGameInstance()->GetLocalPlayerByIndex(PlayerIndex);
+	
 }
 
 int ULocalMultiplayerSubsystem::GetAssignedPlayerIndexFromGamepadDeviceID(int DeviceID)
