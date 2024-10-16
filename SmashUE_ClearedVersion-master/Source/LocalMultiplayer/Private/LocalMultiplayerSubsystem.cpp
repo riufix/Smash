@@ -40,10 +40,12 @@ void ULocalMultiplayerSubsystem::AssignedKeyboardMapping(int PlayerIndex, int Ke
 
 int ULocalMultiplayerSubsystem::GetAssignedPlayerIndexFromGamepadDeviceID(int DeviceID)
 {
+	return -1;
 }
 
 int ULocalMultiplayerSubsystem::AssignPlayerToGamepadDeviceID(int DeviceID)
 {
+	return -1;
 }
 
 void ULocalMultiplayerSubsystem::AssignGamepadInputMapping(int PlayerIndex,	ELocalMultiplayerInputMappingType MappingType) const
