@@ -3,6 +3,7 @@
 
 #include "Characters/SmashCharacter.h"
 
+#include "CameraWorldSubsystem.h"
 #include "Characters/SmashCharacterStateMachine.h"
 
  //Sets default values
@@ -21,13 +22,14 @@ void ASmashCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	CreateStateMachine();
-
 	InitStateMachine();
+
+	GetWorld()->GetSubsystem<UCameraWorldSubsystem>()->AddFollowTarget(this);
 	
 }
 
 // Called every frame
-void ASmashCharacter::Tick(float DeltaTime)
+void ASmashCharacter::Tick(float DeltaTime)	
 {
 	Super::Tick(DeltaTime);
 	TickStateMachine(DeltaTime);

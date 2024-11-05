@@ -54,6 +54,15 @@ FVector UCameraWorldSubsystem::CalculateAveragePositionBetweenTargets()
 
 UCameraComponent* UCameraWorldSubsystem::FindCameraByTag(const FName& Tag) const
 {
-	UGameplayStatics::GetAllActorsWithTag(GetWorld(), Tag, FollowTargets);
-	return 
+	TArray<AActor*> FoundCameras;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), Tag, FoundCameras);
+	for(AActor* targetCameras : FoundCameras)
+	{
+		if(targetCameras->FindComponentByClass<UCameraComponent>())
+		{
+			UCameraComponent* CameraGet = targetCameras->FindComponentByClass<UCameraComponent>();
+			return CameraGet; 
+		}
+	}
+	return nullptr;
 }

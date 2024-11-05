@@ -11,7 +11,7 @@
  * 
  */
 UCLASS()
-class LOCALMULTIPLAYER_API UCameraWorldSubsystem : public UTickableWorldSubsystem
+class SMASHUE_API UCameraWorldSubsystem : public UTickableWorldSubsystem
 {
 	GENERATED_BODY()
 
@@ -26,7 +26,6 @@ public:
 protected:
 	UPROPERTY()
 	TObjectPtr<UCameraComponent> CameraMain;
-
 	UPROPERTY()
 	TArray<AActor*> FollowTargets;
 
