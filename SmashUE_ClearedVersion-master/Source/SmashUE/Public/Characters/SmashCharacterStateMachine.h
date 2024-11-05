@@ -36,11 +36,9 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	ESmashCharacterStateID CurrentStateID;
-
 	UPROPERTY()
 	TObjectPtr<USmashCharacterState> CurrentState;
 	
 	void FindStates();
-
 	void InitStates();
 };
