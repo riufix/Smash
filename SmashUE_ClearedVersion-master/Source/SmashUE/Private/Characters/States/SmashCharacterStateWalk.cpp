@@ -28,7 +28,7 @@ void USmashCharacterStateWalk::StateTick(float DeltaTime)
 {
 	Super::StateTick(DeltaTime);
 	GEngine->AddOnScreenDebugMessage(-1, 1.f,FColor::Green,TEXT("Tick StateWalk"));
-	if(FMath::Abs(Character->GetInputMoveX()) < 0.1f)
+	if(FMath::Abs(Character->GetInputMoveX()) < Character->InputMoveXTreshold)
 	{
 		StateMachine->ChangeState(ESmashCharacterStateID::Idle);
 	}

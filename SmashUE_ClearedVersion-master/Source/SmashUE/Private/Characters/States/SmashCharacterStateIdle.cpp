@@ -32,7 +32,7 @@ void USmashCharacterStateIdle::StateTick(float DeltaTime)
 
 	GEngine-> AddOnScreenDebugMessage(-1, 3.f,FColor::Green,TEXT("Tick StateIdle"));
 
-	if(FMath::Abs(Character->GetInputMoveX()) >0.1f)
+	if(FMath::Abs(Character->GetInputMoveX()) > Character->InputMoveXTreshold)
 	{
 		StateMachine->ChangeState(ESmashCharacterStateID::Walk);
 	}

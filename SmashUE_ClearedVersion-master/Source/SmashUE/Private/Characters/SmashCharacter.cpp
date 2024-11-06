@@ -109,6 +109,7 @@ void ASmashCharacter::BindInputMoveXAxisAndActions(UEnhancedInputComponent* Enha
 	if(InputData->InputActionMoveX)
 	{
 		EnhanceInputComponent->BindAction(InputData->InputActionMoveX, ETriggerEvent::Started, this, &ASmashCharacter::OnInputMoveX);
+		EnhanceInputComponent->BindAction(InputData->InputActionMoveX, ETriggerEvent::Completed, this, &ASmashCharacter::OnInputMoveX);
 		EnhanceInputComponent->BindAction(InputData->InputActionMoveX, ETriggerEvent::Triggered, this, &ASmashCharacter::OnInputMoveX);
 	}
 }

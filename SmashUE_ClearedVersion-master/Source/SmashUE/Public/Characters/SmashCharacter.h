@@ -79,6 +79,8 @@ protected:
 #pragma region Input move X
 public:
 	float GetInputMoveX() const;
+	UPROPERTY()
+	float InputMoveXTreshold = 0.1f;
 
 protected:
 	UPROPERTY()
