@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EnhancedInputSubsystems.h"
 #include "InputMappingContext.h"
 #include "SmashCharacterInputData.h"
 #include "GameFramework/Character.h"
@@ -73,5 +74,18 @@ public:
 protected:
 	void SetupMappingContextIntoController() const;
 	
+#pragma endregion
+
+#pragma region Input move X
+public:
+	float GetInputMoveX() const;
+
+protected:
+	UPROPERTY()
+	float InputMoveX = 0.f;
+
+private:
+	void BindInputMoveXAxisAndActions(UEnhancedInputComponent* EnhanceInputComponent);
+	void OnInputMoveX(const FInputActionValue& InputActionValue);
 #pragma endregion 
 };

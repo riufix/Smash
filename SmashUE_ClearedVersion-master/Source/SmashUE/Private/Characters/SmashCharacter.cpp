@@ -3,6 +3,7 @@
 
 #include "Characters/SmashCharacter.h"
 #include "EnhancedInputSubsystems.h"
+#include "EnhancedInputComponent.h"
 #include "CameraWorldSubsystem.h"
 #include "Characters/SmashCharacterStateMachine.h"
 
@@ -41,8 +42,13 @@ void ASmashCharacter::Tick(float DeltaTime)
 void ASmashCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	RotateMeshUsingOrientX();
+	
 	SetupMappingContextIntoController();
+	RotateMeshUsingOrientX();
+
+	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent);
+	if (EnhancedInputComponent == nullptr) return;
+	BindInputMoveXAxisAndActions(EnhancedInputComponent);
 }
 
 float ASmashCharacter::GetOrientX() const
@@ -89,4 +95,25 @@ void ASmashCharacter::SetupMappingContextIntoController() const
 	if(InputSubsystem == nullptr) return;
 	
 	InputSubsystem->AddMappingContext(InputMappingContext, 0);
+}
+
+float ASmashCharacter::GetInputMoveX() const
+{
+	return InputMoveX;
+}
+
+void ASmashCharacter::BindInputMoveXAxisAndActions(UEnhancedInputComponent* EnhanceInputComponent)
+{
+	if(InputData == nullptr) return;
+
+	if(InputData->InputActionMoveX)
+	{
+		EnhanceInputComponent->BindAction(InputData->InputActionMoveX, ETriggerEvent::Started, this, &ASmashCharacter::OnInputMoveX);
+		EnhanceInputComponent->BindAction(InputData->InputActionMoveX, ETriggerEvent::Triggered, this, &ASmashCharacter::OnInputMoveX);
+	}
+}
+
+void ASmashCharacter::OnInputMoveX(const FInputActionValue& InputActionValue)
+{
+	InputMoveX = InputActionValue.Get<float>();
 }
