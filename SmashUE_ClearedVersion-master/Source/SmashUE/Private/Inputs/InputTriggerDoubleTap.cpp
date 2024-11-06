@@ -5,8 +5,7 @@
 
 #include "EnhancedPlayerInput.h"
 
-ETriggerState UInputTriggerDoubleTap::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput,
-                                                                 FInputActionValue ModifiedValue, float DeltaTime)
+ETriggerState UInputTriggerDoubleTap::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime)
 {
 	return ETriggerState::None;
 }

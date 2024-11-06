@@ -46,7 +46,7 @@ USmashCharacterState* USmashCharacterStateMachine::GetState(ESmashCharacterState
 
 void USmashCharacterStateMachine::Tick(float DeltaTime)
 {
-	if(CurrentState != nullptr) return;
+	if(CurrentState == nullptr) return;
 	CurrentState->StateTick(DeltaTime);
 }
 

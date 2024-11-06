@@ -5,8 +5,7 @@
 
 #include "EnhancedPlayerInput.h"
 
-ETriggerState UInputTriggerPressedFast::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput,
-                                                                   FInputActionValue ModifiedValue, float DeltaTime)
+ETriggerState UInputTriggerPressedFast::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime)
 {
 	return ETriggerState::None;
 }

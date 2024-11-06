@@ -26,6 +26,9 @@ protected:
 	TArray<ASmashCharacter*> CharactersInsideArena;
 
 private:
+	USmashCharacterInputData* LoadInputDataFromConfig();
+	UInputMappingContext* LoadInputMappingContextFromConfig();
+	
 	void FindPlayerStartActorInArena(TArray<AArenaPlayerStart*>& ResultActors);
 
 	void SpawnCharacters(const TArray<AArenaPlayerStart*>& SpawnPoints);

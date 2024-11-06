@@ -3,13 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InputMappingContext.h"
+#include "SmashCharacterInputData.h"
 #include "GameFramework/Character.h"
 #include "SmashCharacter.generated.h"
 
 class USmashCharacterStateMachine;
 
 UCLASS()
-class SMASHUE_API ASmashCharacter : public ACharacter
+	class SMASHUE_API ASmashCharacter : public ACharacter
 {
 	GENERATED_BODY()
 #pragma  region Unreal Default
@@ -61,4 +63,15 @@ protected:
 	
 #pragma endregion State Machine
 	
+#pragma region Input Data/ Mapping Context
+public:
+	UPROPERTY()
+	TObjectPtr<UInputMappingContext> InputMappingContext;
+	UPROPERTY()
+	TObjectPtr<USmashCharacterInputData> InputData;
+
+protected:
+	void SetupMappingContextIntoController() const;
+	
+#pragma endregion 
 };

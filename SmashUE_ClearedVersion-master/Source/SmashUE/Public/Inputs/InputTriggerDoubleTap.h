@@ -15,8 +15,7 @@ class SMASHUE_API UInputTriggerDoubleTap : public UInputTrigger
 	GENERATED_BODY()
 
 protected:
-	virtual ETriggerState UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput,
-	                                                 FInputActionValue ModifiedValue, float DeltaTime) override;
+	virtual ETriggerState UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime) override;
 
 public:
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category="Trigger Settings", meta=(DisplayThumbnail="false"))
